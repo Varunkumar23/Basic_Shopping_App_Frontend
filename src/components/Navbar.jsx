@@ -1,9 +1,9 @@
 import { Link } from "react-router";
+import { useMyContext } from "../context/MyContext.js";
 const Navbar = () => {
+  const { count } = useMyContext();
   return (
     <div className="flex px-6 py-6 justify-between bg-gray-400 items-center">
-
-
       <p>Shopping App</p>
       <div className="flex items-center">
         <input
@@ -16,8 +16,10 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-2 text-b">
-        <Link>Profile</Link>
-        <Link>Signup</Link>
+        <Link to="/profile">Profile</Link>
+        <Link to="signup">Signup</Link>
+        <p>{count}</p>
+
       </div>
     </div>
   );
