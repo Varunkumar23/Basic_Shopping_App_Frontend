@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 
 const SignupPage = () => {
   const navigate = useNavigate();
+
   const handleRegister = async (e) => {
     try {
       e.preventDefault();

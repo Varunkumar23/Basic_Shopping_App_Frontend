@@ -18,15 +18,16 @@ const LoginPage = () => {
             email,
             password,
           }),
+          credentials: "include",
           headers: {
             "content-type": "application/json",
           },
         }
       );
       const result = await resp.json();
-      if (resp.status === 201) {
+      if (resp.status === 200) {
         alert("Login Successfull");
-        navigate("/login");
+        window.open("/","_self");
       } else {
         alert("Login error", result.message);
       }
@@ -68,7 +69,7 @@ const LoginPage = () => {
           </div>
           <div className="flex flex-col gap-3 items-center self-stretch">
             <button className="bg-green-500 rounded-2xl w-25 border-1 py-1 px-2 cursor-pointer">
-              Register
+              Login
             </button>
             <p className="flex flex-col gap-2 items-center justify-center">
               <span>Dont have an account?</span>

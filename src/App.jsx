@@ -7,8 +7,32 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
 import { NotfoundPage } from "./pages/NotfoundPage";
+import { useMyContext } from "./context/MyContext";
 
 function App() {
+  const{user,appLoading}=useMyContext();
+
+  if(!appLoading){
+    return(
+      <div className="min-h-[100vh] flex items-center content-center">
+        <div className="tetx-purple-600 text-3xl">Loading....</div>
+      </div>
+    )
+  }
+
+  const{isAuthenticated}=user;
+
+  if(!isAuthenticated){
+     <BrowserRouter>
+        <Routes>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/*" element={<SignupPage />} />
+        </Routes>
+      </BrowserRouter>
+
+  }
+
   return (
     <>
       {/* <h1 className='text-9xl font-bold text-green-500'>Hello!</h1> */}
